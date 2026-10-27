@@ -3,24 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn JS — Level Game</title>
+  <title>Bug Hunt — Learn JS by Squashing Bugs</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <main class="game">
     <header class="hud">
-      <span>Level <b id="levelNum">1</b>/5</span>
+      <span>Bug <b id="bugNum">1</b>/5</span>
+      <span id="hearts">❤️❤️❤️</span>
       <span>XP <b id="xp">0</b></span>
     </header>
 
-    <h1 id="title">Loading…</h1>
+    <section class="monster-card">
+      <div class="monster" id="monsterEmoji">🐛</div>
+      <h2 id="monsterName">Loading…</h2>
+      <div class="hp-bar"><div class="hp-fill" id="hpFill"></div></div>
+      <p class="hp-text"><span id="hpText">30</span> / 30 HP</p>
+    </section>
+
+    <h1 id="title"></h1>
     <p id="prompt"></p>
 
-    <textarea id="code" spellcheck="false" placeholder="Write your code here…"></textarea>
+    <div class="editor">
+      <div class="editor-bar">
+        <span>🐞 bug.js</span>
+        <span class="line-count" id="lineCount">1 line</span>
+      </div>
+      <textarea id="code" spellcheck="false"></textarea>
+    </div>
 
     <div class="buttons">
-      <button id="check">Check answer ▶</button>
-      <button id="next" class="hidden">Next level →</button>
+      <button id="check">⚔️ Attack with fix</button>
+      <button id="hint" class="ghost">💡 Hint</button>
+      <button id="next" class="hidden">Next bug →</button>
     </div>
 
     <p id="feedback"></p>

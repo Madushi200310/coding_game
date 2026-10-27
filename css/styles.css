@@ -3,69 +3,153 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: #11161f;
+  background: radial-gradient(circle at 50% 0%, #1a2332 0%, #0b0f15 70%);
   color: #e7ecf3;
   display: flex;
   justify-content: center;
-  padding: 32px 16px;
+  padding: 24px 16px;
+  min-height: 100vh;
 }
 
 .game { width: 100%; max-width: 640px; }
 
+/* HUD */
 .hud {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
   color: #8fa0b5;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .hud b { color: #7ee787; }
 
-h1 { font-size: 24px; margin: 0 0 8px; }
-p { line-height: 1.5; }
+/* Monster card */
+.monster-card {
+  background: #141b26;
+  border: 1px solid #24303f;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.monster {
+  font-size: 64px;
+  line-height: 1;
+  transition: transform 0.2s, opacity 0.5s, filter 0.5s;
+}
+.monster.dead { opacity: 0.25; filter: grayscale(1); transform: scale(0.9); }
+.monster.shake { animation: shake 0.4s; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-9px) rotate(-4deg); }
+  40% { transform: translateX(9px) rotate(4deg); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+#monsterName { font-size: 16px; margin: 12px 0 14px; color: #c9d4e2; }
+
+.hp-bar {
+  height: 10px;
+  background: #0b1017;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #24303f;
+}
+.hp-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #2ea043, #7ee787);
+  transition: width 0.6s ease, background 0.4s;
+}
+.hp-fill.low { background: linear-gradient(90deg, #d29922, #f2cc60); }
+.hp-fill.critical { background: linear-gradient(90deg, #da3633, #ff7b72); }
+
+.hp-text { font-size: 12px; color: #8fa0b5; margin: 8px 0 0; }
+
+/* Titles + prompt */
+h1 { font-size: 20px; margin: 0 0 8px; }
+p { line-height: 1.55; color: #b6c2d2; }
 
 code {
   background: #1d2634;
   padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.95em;
+  font-size: 0.92em;
   color: #ffd479;
+  font-family: ui-monospace, Consolas, monospace;
 }
+
+/* Editor */
+.editor {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #24303f;
+  margin-top: 14px;
+}
+.editor-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #0f151d;
+  font-size: 12px;
+  color: #8fa0b5;
+  border-bottom: 1px solid #24303f;
+}
+.line-count { opacity: 0.7; }
 
 textarea {
   width: 100%;
-  min-height: 140px;
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #2a3646;
+  min-height: 110px;
+  padding: 14px;
+  border: none;
   background: #0b1017;
   color: #e7ecf3;
   font-family: ui-monospace, Consolas, monospace;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
   resize: vertical;
 }
-textarea:focus { outline: 2px solid #3b82f6; border-color: transparent; }
+textarea:focus { outline: none; }
 
-.buttons { display: flex; gap: 10px; margin-top: 12px; }
+/* Buttons */
+.buttons { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
 
 button {
-  padding: 10px 18px;
+  padding: 11px 18px;
   font-size: 15px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background: #3b82f6;
+  background: #da3633;
   color: white;
   font-weight: 600;
+  transition: background 0.15s, transform 0.1s;
 }
-button:hover { background: #2563eb; }
+button:hover { background: #b62324; }
+button:active { transform: scale(0.97); }
+
+button.ghost {
+  background: transparent;
+  border: 1px solid #24303f;
+  color: #8fa0b5;
+}
+button.ghost:hover { background: #141b26; border-color: #3b82f6; color: #e7ecf3; }
+
 #next { background: #2ea043; }
 #next:hover { background: #238636; }
 
-#feedback { margin-top: 14px; min-height: 24px; font-weight: 500; }
+/* Feedback */
+#feedback {
+  margin-top: 16px;
+  min-height: 28px;
+  font-weight: 500;
+  line-height: 1.5;
+}
 #feedback.good { color: #7ee787; }
 #feedback.bad { color: #ff8a8a; }
+#feedback.hint { color: #f2cc60; }
 
 .hidden { display: none; }
