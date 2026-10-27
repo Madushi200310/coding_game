@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn JS — Level Game</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="game">
+    <header class="hud">
+      <span>Level <b id="levelNum">1</b>/5</span>
+      <span>XP <b id="xp">0</b></span>
+    </header>
+
+    <h1 id="title">Loading…</h1>
+    <p id="prompt"></p>
+
+    <textarea id="code" spellcheck="false" placeholder="Write your code here…"></textarea>
+
+    <div class="buttons">
+      <button id="check">Check answer ▶</button>
+      <button id="next" class="hidden">Next level →</button>
+    </div>
+
+    <p id="feedback"></p>
+  </main>
+
+  <script src="js/game.js"></script>
+</body>
+</html>
