@@ -13,17 +13,19 @@ body {
 
 .game { width: 100%; max-width: 640px; }
 
-/* HUD */
+/* ---------- HUD ---------- */
 .hud {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
   color: #8fa0b5;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .hud b { color: #7ee787; }
 
-/* Monster card */
+/* ---------- Monster card ---------- */
 .monster-card {
   background: #141b26;
   border: 1px solid #24303f;
@@ -69,7 +71,7 @@ body {
 
 .hp-text { font-size: 12px; color: #8fa0b5; margin: 8px 0 0; }
 
-/* Titles + prompt */
+/* ---------- Titles + prompt ---------- */
 h1 { font-size: 20px; margin: 0 0 8px; }
 p { line-height: 1.55; color: #b6c2d2; }
 
@@ -82,7 +84,7 @@ code {
   font-family: ui-monospace, Consolas, monospace;
 }
 
-/* Editor */
+/* ---------- Editor ---------- */
 .editor {
   border-radius: 10px;
   overflow: hidden;
@@ -114,7 +116,7 @@ textarea {
 }
 textarea:focus { outline: none; }
 
-/* Buttons */
+/* ---------- Buttons ---------- */
 .buttons { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
 
 button {
@@ -130,6 +132,7 @@ button {
 }
 button:hover { background: #b62324; }
 button:active { transform: scale(0.97); }
+button:disabled { opacity: 0.6; cursor: wait; }
 
 button.ghost {
   background: transparent;
@@ -141,7 +144,7 @@ button.ghost:hover { background: #141b26; border-color: #3b82f6; color: #e7ecf3;
 #next { background: #2ea043; }
 #next:hover { background: #238636; }
 
-/* Feedback */
+/* ---------- Feedback ---------- */
 #feedback {
   margin-top: 16px;
   min-height: 28px;
@@ -152,4 +155,26 @@ button.ghost:hover { background: #141b26; border-color: #3b82f6; color: #e7ecf3;
 #feedback.bad { color: #ff8a8a; }
 #feedback.hint { color: #f2cc60; }
 
+/* ---------- Leaderboard ---------- */
+.leaderboard {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #24303f;
+}
+.leaderboard h2 {
+  font-size: 16px;
+  margin: 0 0 12px;
+  color: #8fa0b5;
+}
+.leaderboard ol {
+  margin: 0;
+  padding-left: 22px;
+}
+.leaderboard li {
+  padding: 4px 0;
+  color: #b6c2d2;
+}
+.leaderboard b { color: #7ee787; }
+
+/* ---------- Utility ---------- */
 .hidden { display: none; }
